@@ -23,3 +23,4 @@ Route::get('/show', 'EstudiantesController@show');
 Route::post('/edit', 'EstudiantesController@edit');
 Route::post('/create', 'EstudiantesController@create');
 Route::post('/destroy', 'EstudiantesController@destroy');
+Route::post('/getEstudiante', 'EstudiantesController@getEstudiante');

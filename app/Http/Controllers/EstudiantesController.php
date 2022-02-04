@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\DB;
 class EstudiantesController extends Controller
 {
     
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         try {
@@ -47,26 +42,18 @@ class EstudiantesController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\estudiantes  $estudiantes
-     * @return \Illuminate\Http\Response
-     */
     public function show()
     {
         try {
-            $sql='SELECT * FROM estudiantes';
-            $result = DB::select(DB::raw($sql));
-            
+
+            $result = DB::table('estudiantes')->get();
+
             if($result){
                 return response()->json([
                     'data' => $result
                 ],200);
             }else{
-                return response()->json([
-                    'error' => 'No se encontraron registros en la base de datos.'
-                ],204);
+                return response()->json([],204);
             }
         } catch (Exception $e) {
             return response()->json([
@@ -77,12 +64,7 @@ class EstudiantesController extends Controller
         
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\estudiantes  $estudiantes
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Request $request)
     {
         try {
@@ -114,12 +96,6 @@ class EstudiantesController extends Controller
     }
 
    
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\estudiantes  $estudiantes
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request)
     {
         try {
@@ -137,6 +113,31 @@ class EstudiantesController extends Controller
                 ],204);
             }
 
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+                'trace' => $e->getTrace()
+            ],400);
+        }
+    }
+
+    public function getEstudiante (Request $request)
+    {
+        try {
+            $req = $request->all();
+
+            $result = DB::table('estudiantes')->where('id', $req['id'])->first();
+
+            if($result){
+                return response()->json([
+                    'data' => $result
+                ],200);
+            }else{
+                return response()->json([
+                    'error' => 'No se encontró el estudiante.'
+                ],204);
+            }
+            
         } catch (Exception $e) {
             return response()->json([
                 'error' => $e->getMessage(),
