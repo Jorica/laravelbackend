@@ -7,6 +7,25 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+
+# Requisitos instalados en el equipo
+
+1. XAMPP php 7.42 https://www.apachefriends.org/download.html
+
+2. composer https://getcomposer.org/Composer-Setup.exe
+
+# Configuracion del proyecto
+
+1. Inicializar los servicios de XAMPP `Apache` y `MySql` mantenerlos activos mientras se usa el aplicativo front.
+
+2. Crear una base de datos con el nombre `laravel` sin tablas, solo la base de datos. http://localhost/phpmyadmin/.
+
+3. Abrir una terminal en la raiz del proyecto y ejecutar el comando `php artisan migrate`.
+
+# Uso del proyecto
+
+1. Abrir una terminal en la raiz del proyecto y ejecutar el comando `php artisan serve`, no cerrar la terminal mientras se usa el aplicativo front. Funciona sobre el puerto 8000, si se usa otro es necesario cambiarlo en el proyecto `angularfrontend` en las variables de entorno `environments`.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

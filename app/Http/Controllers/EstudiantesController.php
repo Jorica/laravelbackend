@@ -49,11 +49,9 @@ class EstudiantesController extends Controller
             $result = DB::table('estudiantes')->get();
 
             if($result){
-                return response()->json([
-                    'data' => $result
-                ],200);
+                return response()->json( $result ,200);
             }else{
-                return response()->json([],204);
+                return response()->json('',204);
             }
         } catch (Exception $e) {
             return response()->json([
